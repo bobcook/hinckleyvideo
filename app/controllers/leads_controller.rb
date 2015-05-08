@@ -5,6 +5,13 @@ class LeadsController < ApplicationController
   # GET /leads.json
   def index
     @leads = Lead.all
+
+    new_record = Lead.new(lead_params)
+    # if new_record.save
+      #format.html { redirect_to @lead, notice: 'Your contact was successfully created.' }
+    # end
+    new_record.save
+
   end
 
   # GET /leads/1
