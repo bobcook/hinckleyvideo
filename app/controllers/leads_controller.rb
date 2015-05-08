@@ -6,7 +6,6 @@ class LeadsController < ApplicationController
   def index
     @leads = Lead.all
 
-
     new_record = Lead.new
     # &
     # name=12+123&
@@ -18,7 +17,7 @@ class LeadsController < ApplicationController
     # Phone=9844444444&
     # email%5B%5D=1234%4021341234&
     # typecode=Oli&
-    # list=FD2WkGL763E2W3RKGbIsqP9A 
+    # list=FD2WkGL763E2W3RKGbIsqP9A
     new_record.first_name = params[:name]
     new_record.last_name = params[:lastname]
     new_record.address = params[:Address]
@@ -30,7 +29,7 @@ class LeadsController < ApplicationController
     new_record.email = params[:email]
 
     new_record.save
-    
+
   end
 
   # GET /leads/1
