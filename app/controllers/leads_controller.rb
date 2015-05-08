@@ -28,11 +28,13 @@ class LeadsController < ApplicationController
     new_record.phone = params[:Phone]
     new_record.email = params[:email]
 
-    if new_record.save
-      redirect_to '/pages/thanks'
-    else 
-      redirect_to '/'
-    end
+    new_record.save
+
+    # if new_record.save
+    #   redirect_to '/pages/thanks'
+    # else 
+    #   redirect_to '/'
+    # end
 
   end
 
