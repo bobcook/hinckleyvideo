@@ -204,13 +204,67 @@
 
 
 	<div id="553939d59003f" class="optin-box optin-box-7" style="margin-right: auto;margin-left: auto;">
+<!-- 
+ <div class="text-box">  <input type="text" minlength="10" maxlength="10" required="" placeholder="Phone (XXXXXXXXXX)" class="form-control input-md" name="Phone" id="Phone" pattern="[0-9]{10}"/></div>
+	<div class="text-box"><input type="email" placeholder="Email" class="form-control input-md" name="email" id="email" required=""/></div>
+	<input id="date" name="date" type="hidden"/>
 
+	 
+
+	<script type="text/javascript">
+	  document.getElementById('date').value = Date();
+	</script>
+	<input type="hidden" class="form-control input-md" name="typecode" id="typecode" value="Oli"/>
+	<input type="hidden" name="list" value="FD2WkGL763E2W3RKGbIsqP9A"/>
+	<button class="default-button" type="submit">
+	<span>
+	Get My Free DVD
+	</span>
+	</button> -->
 
 	<h2>Fill Out This Form To Get Your FREE DVD Today</h2>
 	<div class="optin-box-content">
 
-	<form action="http://sendy.livingscriptures.com/subscribe" method="POST" onsubmit="MM_validateForm('name','','R','lastname','','R','Address','','R','City','','R','Zip','','NisNum','Phone','','RisNum');return document.MM_returnValue" accept-charset="utf-8"><div class="text-box">
-	                    <input type="text" placeholder="First Name" class="form-control input-md" name="name" id="name" minlength="2" required=""/></div>
+	<%= form_tag('/leads', method: :get) do -%>
+		<div class="text-box">
+			<%= text_field_tag 'name', nil, class: 'form-control input-md', placeholder: 'First Name', minlength: '2' %>
+		</div>
+		<div class="text-box">
+			<%= text_field_tag 'lastname', nil, class: 'form-control input-md', placeholder: 'Last Name', minlength: '2' %>
+		</div>
+		<div class="text-box">
+			<%= text_field_tag 'Address', nil, class: 'form-control input-md', placeholder: 'Address', minlength: '2' %>
+		</div>
+		<div class="text-box">
+			<%= text_field_tag 'Ciby', nil, class: 'form-control input-md', placeholder: 'City', minlength: '2' %>
+		</div>
+		<div class="text-box">
+			<%= text_field_tag 'Zip', nil, class: 'form-control input-md', placeholder: 'Zip/Postal', minlength: '5', maxlength: '6' %>
+		</div>
+		<div class="text-box">
+			<%= select_tag "Country", options_for_select([ "United States", "Canada"], "United States") %>
+		</div>
+		<div class="text-box">
+			<%= text_field_tag 'Phone', nil, class: 'form-control input-md', placeholder: 'Phone (XXXXXXXXXX)', minlength: '5', pattern: "[0-9]{10}" %>
+		</div>
+		<div class="text-box">
+			<%= email_field 'email', nil, class: 'form-control input-md', placeholder: 'Email' %>
+		</div>
+		<%= hidden_field_tag 'typecode', 'Oli', style:"display:none"%>
+		<%= hidden_field_tag 'list', 'FD2WkGL763E2W3RKGbIsqP9A' %>
+     
+    <button class="default-button" type="submit">
+		<span>
+			Get My Free DVD
+		</span>
+		</button>
+
+		
+
+	<% end %>
+
+	<!-- <form action="http://sendy.livingscriptures.com/subscribe" method="POST" onsubmit="MM_validateForm('name','','R','lastname','','R','Address','','R','City','','R','Zip','','NisNum','Phone','','RisNum');return document.MM_returnValue" accept-charset="utf-8"><div class="text-box">
+	<input type="text" placeholder="First Name" class="form-control input-md" name="name" id="name" minlength="2" required=""/></div>
 	<div class="text-box"><input type="text" placeholder="Last Name" class="form-control input-md" name="lastname" id="lastname" minlength="2" required=""/></div>
 	<div class="text-box"><input type="text" placeholder="Address" class="form-control input-md" name="Address" id="Address" required=""/></div>
 	<div class="text-box"><input type="text" placeholder="City" class="form-control input-md" name="City" id="City" minlength="2" required=""/></div>
@@ -307,7 +361,7 @@
 
 	 
 
-	</form>
+	</form> -->
 
 
 	<p class="privacy">
