@@ -239,6 +239,9 @@
 			<%= text_field_tag 'Ciby', nil, class: 'form-control input-md', placeholder: 'City', minlength: '2' %>
 		</div>
 		<div class="text-box">
+			<%= select_tag "State", options_for_select(["Alabama","Alaska","Alberta","Arizona","Arkansas","British Columbia","California","Colorado","Connecticut","Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Manitoba","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Brunswick","Newfoundland and Labrador","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Northwest Territories","Nova Scotia","Nunavut","Ohio","Oklahoma","Ontario","Oregon","Pennsylvania","Prince Edward Island","Quebec","Rhode Island","Saskatchewan","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming","Yukon"], "United States") %>
+		</div>
+		<div class="text-box">
 			<%= text_field_tag 'Zip', nil, class: 'form-control input-md', placeholder: 'Zip/Postal', minlength: '5', maxlength: '6' %>
 		</div>
 		<div class="text-box">
@@ -254,11 +257,9 @@
 		<%= hidden_field_tag 'list', 'FD2WkGL763E2W3RKGbIsqP9A' %>
 
     <button class="default-button" type="submit">
-
-
-		<span>
-			Get My Free DVD
-		</span>
+			<span>
+				Get My Free DVD
+			</span>
 		</button>
 
 	<% end %>

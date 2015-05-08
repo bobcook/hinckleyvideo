@@ -22,13 +22,17 @@ class LeadsController < ApplicationController
     new_record.last_name = params[:lastname]
     new_record.address = params[:Address]
     new_record.city = params[:Ciby]
-    new_record.state = params[:Country]
-    new_record.zip = params[:zip]
+    new_record.state = params[:State]
+    new_record.zip = params[:Zip]
     new_record.country = params[:Country]
     new_record.phone = params[:Phone]
     new_record.email = params[:email]
 
-    new_record.save
+    if new_record.save
+      redirect_to '/pages/thanks'
+    else 
+      redirect_to '/'
+    end
 
   end
 
