@@ -6,10 +6,28 @@ class LeadsController < ApplicationController
   def index
     @leads = Lead.all
 
-    new_record = Lead.new(lead_params)
-    # if new_record.save
-      #format.html { redirect_to @lead, notice: 'Your contact was successfully created.' }
-    # end
+    new_record = Lead.new
+    # &
+    # name=12+123&
+    # lastname=112312&
+    # Address=123&
+    # Ciby=123123123123&
+    # Zip=2134&
+    # Country=Canada&
+    # Phone=9844444444&
+    # email%5B%5D=1234%4021341234&
+    # typecode=Oli&
+    # list=FD2WkGL763E2W3RKGbIsqP9A
+    new_record.first_name = params[:name]
+    new_record.last_name = params[:lastname]
+    new_record.address = params[:Address]
+    new_record.city = params[:Ciby]
+    new_record.state = params[:Country]
+    new_record.zip = params[:zip]
+    new_record.country = params[:Country]
+    new_record.phone = params[:Phone]
+    new_record.email = params[:email]
+
     new_record.save
 
   end
