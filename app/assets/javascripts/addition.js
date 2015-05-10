@@ -10,7 +10,7 @@ $(document).ready(function(){
       var url1 = 'http://api.five9.com/web2campaign/AddToList?';
       var url2 = 'http://sendy.livingscriptures.com/subscribe';
 
-      alert("ajax sending module starting");
+      // alert("ajax sending module starting");
       console.log(form);
 
       form = "";
@@ -33,8 +33,8 @@ $(document).ready(function(){
           data: form,
           url: url1,
           success: function(response) {
-              alert("sent ajax to url1");
-              alert(this.url);
+              // alert("sent ajax to url1");
+              // alert(this.url);
               form = $('#multi_sending').serialize();  
               $.ajax({
                   type: 'POST',
@@ -45,8 +45,7 @@ $(document).ready(function(){
                   url: url2,
                   // dataType: "jsonp",
                   success: function(response) {
-                      alert(this.url);
-                      // alert("sent ajax to url2");
+                      // alert(this.url);
                   }
               });
           }
