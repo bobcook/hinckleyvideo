@@ -13,7 +13,7 @@ class LeadsController < ApplicationController
     new_record.first_name = params[:name]
     new_record.last_name = params[:lastname]
     new_record.address = params[:Address]
-    new_record.city = params[:Ciby]
+    new_record.city = params[:City]
     new_record.state = params[:State]
     new_record.zip = params[:Zip]
     new_record.country = params[:Country]
@@ -32,34 +32,35 @@ class LeadsController < ApplicationController
     send_url += '&zip=' + new_record.zip
     send_url += '&street=' + new_record.city
 
-    response = RestClient.get send_url      
+    # binding.pry
+    response = RestClient.get send_url
 
-    if response == 200
-      send_url = "http://sendy.livingscriptures.com/subscribe?&name="
-      send_url += new_record.first_name
-      send_url += "&email=" + new_record.email
-      send_url += "&Address=" + new_record.address
-      send_url += "&City=" + new_record.city
-      send_url += "&State=" + new_record.state
-      send_url += "&Zip=" + new_record.zip
-      send_url += "&Phone=" + new_record.phone
-      send_url += "&lastname=" + new_record.last_name
-      send_url += "&typecode=" + "234"
-      send_url += "&Country=" + new_record.country
-      send_url += "&date=" + "20150505"
-      send_url += "&listname=" + "234"
-      send_url += "&list=FD2WkGL763E2W3RKGbIsqP9A"
+    # if response == 200
+      # send_url = "http://sendy.livingscriptures.com/subscribe?&name="
+      # send_url += new_record.first_name
+      # send_url += "&email=" + new_record.email
+      # send_url += "&Address=" + new_record.address
+      # send_url += "&City=" + new_record.city
+      # send_url += "&State=" + new_record.state
+      # send_url += "&Zip=" + new_record.zip
+      # send_url += "&Phone=" + new_record.phone
+      # send_url += "&lastname=" + new_record.last_name
+      # send_url += "&typecode=" + "234"
+      # send_url += "&Country=" + new_record.country
+      # send_url += "&date=" + "20150505"
+      # send_url += "&listname=" + "234"
+      # send_url += "&list=FD2WkGL763E2W3RKGbIsqP9A"
 
-      response2 = RestClient.post send_url
+      # response2 = RestClient.get send_url
 
-      if response2 == 200
-        if new_record.save
-          redirect_to '/pages/thanks'
-        else
-          redirect_to '/'
-        end
-      end
-    end
+      # if response2 == 200
+        # if new_record.save
+        #   redirect_to '/pages/thanks'
+        # else
+        #   redirect_to '/'
+        # end
+      # end
+    # end
     #response = RestClient.post 'http://localhost:7000', new_record.to_json, :content_type => :json, :accept => :json
 
     # if new_record.save

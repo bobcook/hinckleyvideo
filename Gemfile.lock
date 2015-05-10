@@ -289,6 +289,7 @@ DEPENDENCIES
   launchy
   mysql2
   pg
+  pry
   quiet_assets
   rails (= 4.2.0)
   rails_12factor
