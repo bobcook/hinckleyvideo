@@ -9,7 +9,7 @@ class LeadsController < ApplicationController
     @leads = Lead.all
 
     new_record = Lead.new
-    
+
     new_record.first_name = params[:name]
     new_record.last_name = params[:lastname]
     new_record.address = params[:Address]
@@ -48,7 +48,7 @@ class LeadsController < ApplicationController
       # send_url += "&typecode=" + "234"
       # send_url += "&Country=" + new_record.country
       # send_url += "&date=" + "20150505"
-      # send_url += "&listname=" + "234"
+      # send_url += "&listname=" + "234"enping
       # send_url += "&list=FD2WkGL763E2W3RKGbIsqP9A"
 
       # response2 = RestClient.get send_url
@@ -65,7 +65,7 @@ class LeadsController < ApplicationController
 
     # if new_record.save
     #   redirect_to '/pages/thanks'
-    # else 
+    # else
     #   redirect_to '/'
     # end
 
