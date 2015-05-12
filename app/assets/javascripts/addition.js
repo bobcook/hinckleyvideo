@@ -2,13 +2,13 @@
 $(document).ready(function(){
 
   function delay_redirecting() {
-    window.location = "http://www.hinckleyvideo.com/thanks/";
+    window.location = "https://www.hinckleyvideo.com/thanks/";
   }
 
   $('#multi_sending').submit(function(){
       var form = $('#multi_sending').serialize();  
-      var url1 = 'http://api.five9.com/web2campaign/AddToList?';
-      var url2 = 'http://sendy.livingscriptures.com/subscribe';
+      var url1 = 'https://api.five9.com/web2campaign/AddToList?';
+      var url2 = 'https://sendy.livingscriptures.com/subscribe';
 
       // alert("ajax sending module starting");
       console.log(form);

@@ -20,11 +20,11 @@ class LeadsController < ApplicationController
     new_record.phone = params[:Phone]
     new_record.email = params[:email]
 
-    # var url1 = 'http://api.five9.com/web2campaign/AddToList?';
-    # var url2 = 'http://sendy.livingscriptures.com/subscribe';
+    # var url1 = 'https://api.five9.com/web2campaign/AddToList?';
+    # var url2 = 'https://sendy.livingscriptures.com/subscribe';
 
-    # http://api.five9.com/web2campaign/AddToList?&F9domain=LivingScriptures&number1=9124238974&F9list=Outbound%20Generated%20Leads&F9CallASAP=f9&first_name=1123&last_name=123&zip=12123&street=123
-    send_url = 'http://api.five9.com/web2campaign/AddToList?&F9domain=LivingScriptures&number1='
+    # https://api.five9.com/web2campaign/AddToList?&F9domain=LivingScriptures&number1=9124238974&F9list=Outbound%20Generated%20Leads&F9CallASAP=f9&first_name=1123&last_name=123&zip=12123&street=123
+    send_url = 'https://api.five9.com/web2campaign/AddToList?&F9domain=LivingScriptures&number1='
     send_url += new_record.phone
     send_url += '&F9list=Outbound%20Generated%20Leads&F9CallASAP=f9'
     send_url += '&first_name=' + new_record.first_name
@@ -36,7 +36,7 @@ class LeadsController < ApplicationController
     response = RestClient.get send_url
 
     # if response == 200
-      # send_url = "http://sendy.livingscriptures.com/subscribe?&name="
+      # send_url = "https://sendy.livingscriptures.com/subscribe?&name="
       # send_url += new_record.first_name
       # send_url += "&email=" + new_record.email
       # send_url += "&Address=" + new_record.address
@@ -61,7 +61,7 @@ class LeadsController < ApplicationController
         # end
       # end
     # end
-    #response = RestClient.post 'http://localhost:7000', new_record.to_json, :content_type => :json, :accept => :json
+    #response = RestClient.post 'https://localhost:7000', new_record.to_json, :content_type => :json, :accept => :json
 
     # if new_record.save
     #   redirect_to '/pages/thanks'
