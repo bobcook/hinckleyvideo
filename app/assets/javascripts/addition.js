@@ -18,7 +18,8 @@ var Search_Config = {
 })(window, document);
 
 
-$(document).ready(function(){
+jQuery(document).ready(function($){
+
   $('#multi_sending').submit(function(){
 
     var form = $('#multi_sending').serialize();
@@ -26,7 +27,7 @@ $(document).ready(function(){
     var url2 = 'http://sendy.livingscriptures.com/subscribe';
 
     // alert("ajax sending module starting");
-    // console.log(form);
+    console.log(form);
 
     form = "";
     form += "F9domain=LivingScriptures&";
@@ -61,9 +62,9 @@ $(document).ready(function(){
           data: form,
           url: url2,
           // dataType: "jsonp",
-          success: function(response) {
-            // alert(this.url);
-            // alert("sent ajax to url2");
+          complete: function(response) {
+            // alert(222);
+            // alert( response.status );
           }
         });
       }
