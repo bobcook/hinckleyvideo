@@ -7,7 +7,7 @@ $(document).ready(function(){
     var url2 = 'http://sendy.livingscriptures.com/subscribe';
 
     // alert("ajax sending module starting");
-    console.log(form);
+    // console.log(form);
 
     form = "";
     form += "F9domain=LivingScriptures&";
