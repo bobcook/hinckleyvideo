@@ -21,12 +21,12 @@ var Search_Config = {
 jQuery(document).ready(function($){
 
   $('#multi_sending').submit(function(){
-
+    alert("working");
     var form = $('#multi_sending').serialize();
     var url1 = 'http://api.five9.com/web2campaign/AddToList?';
     var url2 = 'http://sendy.livingscriptures.com/subscribe';
 
-    // alert("ajax sending module starting");
+    alert("ajax sending module starting");
     console.log(form);
 
     form = "";
@@ -40,7 +40,7 @@ jQuery(document).ready(function($){
     form += "street="+$('#City').val();
 
     console.log(form);
-    // alert(form);
+    alert(form);
 
     $.ajax({
       type: 'GET',
@@ -50,8 +50,8 @@ jQuery(document).ready(function($){
       data: form,
       url: url1,
       success: function(response) {
-        // alert("sent ajax to url1");
-        // alert(this.url);
+        alert("sent ajax to url1");
+        alert(this.url);
         form = $('#multi_sending').serialize();
 
         $.ajax({
