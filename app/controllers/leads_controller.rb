@@ -8,32 +8,13 @@ class LeadsController < ApplicationController
   def index
     @leads = Lead.all
 
-    new_record = Lead.new
+    if !params.nil?
+      redirect_to '/pages/thanks'
+    else
+      redirect_to '/'
+    end
 
-    new_record.first_name = params[:name]
-    new_record.last_name = params[:lastname]
-    new_record.address = params[:Address]
-    new_record.city = params[:City]
-    new_record.state = params[:State]
-    new_record.zip = params[:Zip]
-    new_record.country = params[:Country]
-    new_record.phone = params[:Phone]
-    new_record.email = params[:email]
-
-    # var url1 = 'https://api.five9.com/web2campaign/AddToList?';
-    # var url2 = 'https://sendy.livingscriptures.com/subscribe';
-
-    # https://api.five9.com/web2campaign/AddToList?&F9domain=LivingScriptures&number1=9124238974&F9list=Outbound%20Generated%20Leads&F9CallASAP=f9&first_name=1123&last_name=123&zip=12123&street=123
-    send_url = 'https://api.five9.com/web2campaign/AddToList?&F9domain=LivingScriptures&number1='
-    send_url += new_record.phone
-    send_url += '&F9list=Outbound%20Generated%20Leads&F9CallASAP=f9'
-    send_url += '&first_name=' + new_record.first_name
-    send_url += '&last_name=' + new_record.last_name
-    send_url += '&zip=' + new_record.zip
-    send_url += '&street=' + new_record.city
-
-    # binding.pry
-    response = RestClient.get send_url
+    Lead.delay.send_data(params)
 
     # if response == 200
       # send_url = "https://sendy.livingscriptures.com/subscribe?&name="
@@ -62,12 +43,6 @@ class LeadsController < ApplicationController
       # end
     # end
     #response = RestClient.post 'https://localhost:7000', new_record.to_json, :content_type => :json, :accept => :json
-
-    # if new_record.save
-    #   redirect_to '/pages/thanks'
-    # else
-    #   redirect_to '/'
-    # end
 
   end
 
@@ -133,6 +108,6 @@ class LeadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lead_params
-      params.require(:lead).permit(:first_name, :last_name, :address, :city, :state, :zip, :country, :phone, :email)
+      #params.require(:lead).permit(:first_name, :last_name, :address, :city, :state, :zip, :country, :phone, :email)
     end
 end
