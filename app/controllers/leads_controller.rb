@@ -30,7 +30,7 @@ class LeadsController < ApplicationController
       # send_url += "&Country=" + new_record.country
       # send_url += "&date=" + "20150505"
       # send_url += "&listname=" + "234"enping
-      # send_url += "&list=FD2WkGL763E2W3RKGbIsqP9A"
+      # send_url += "&list=WAa1ZexLmHWH9L6YaKXO2A"
 
       # response2 = RestClient.get send_url
 
