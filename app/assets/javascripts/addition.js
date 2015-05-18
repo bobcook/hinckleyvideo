@@ -36,14 +36,15 @@ jQuery(document).ready(function($){
     form += "F9list=Outbound%20Generated%20Leads&";
     form += "F9CallASAP=f9&";
     form += "name="+$('#name').val()+"&";
-    form += "first_name="+$('#first_name').val()+"&";
-    form += "last_name="+$('#last_name').val()+"&";
-    form += "street="+$('#street').val()+"&";
-    form += "city="+$('#city').val()+"&";
-    form += "state="+$('#state').val()+"&";
+    form += "first_name="+$('#name').val()+"&";
+    form += "last_name="+$('#lastname').val()+"&";
+    form += "street="+$('#Address').val()+"&";
+    form += "city="+$('#City').val()+"&";
+    form += "state="+$('#State').val()+"&";
     form += "zip="+$('#Zip').val()+"&";
-    form += "Country="+$('#country').val()+"&";
-    form += "E-mail="+$('#email').val();
+    form += "Country="+$('#Country').val()+"&";
+    form += "typecode="+$('OGF').val()+"&";
+    form += "email="+$('#email').val();
 
     console.log(form);
     alert(form);
