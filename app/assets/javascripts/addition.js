@@ -35,13 +35,15 @@ jQuery(document).ready(function($){
     form += "number1="+$('#Phone').val()+"&";
     form += "F9list=Outbound%20Generated%20Leads&";
     form += "F9CallASAP=f9&";
-    form += "first_name="+$('#name').val()+"&";
-    form += "last_name="+$('#lastname').val()+"&";
+    form += "name="+$('#name').val()+"&";
+    form += "first_name="+$('#first_name').val()+"&";
+    form += "last_name="+$('#last_name').val()+"&";
     form += "street="+$('#street').val()+"&";
     form += "city="+$('#city').val()+"&";
+    form += "state="+$('#state').val()+"&";
     form += "zip="+$('#Zip').val()+"&";
-    form += "country="+$('#country').val()+"&";
-    form += "email="+$('#email').val();
+    form += "Country="+$('#country').val()+"&";
+    form += "E-mail="+$('#email').val();
 
     console.log(form);
     alert(form);
