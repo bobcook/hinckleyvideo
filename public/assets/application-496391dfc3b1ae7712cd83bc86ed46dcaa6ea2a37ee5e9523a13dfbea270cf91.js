@@ -1357,117 +1357,84 @@ jQuery.noConflict();
   };
 
 }).call(this);
-// https://api.five9.com/web2campaign/AddToList?F9domain=LivingScriptures&F9list=Outbound%20Generated%20Leads&number1=9252182325&first_name=enping&last_name=an&city=city &list=list&zip=zip&F9CallASAP=f9&street=street&listname=listname&email=email@email.com
+// var Search_Config = {
+//    AUTH_TOKEN: "23d9c794-5152-05d4-31fb-87936df8e6aa",
+//    ADDRESS_SEARCH: true,
+//    PHONE_SEARCH: true,
+//    EMAIL_SEARCH: true,
+//    ADDRESS_FIELDS: [
+//       [{"name":"name","id":"name","mapping":["notMapped"]},{"name":"lastname","id":"lastname","mapping":["notMapped"]},{"name":"Address","id":"Address","mapping":["addressLine1"]},{"name":"City","id":"City","mapping":"city"},{"name":"State","id":"State","mapping":"state"},{"name":"Zip","id":"Zip","mapping":"zip"},{"name":"Country","id":"Country","mapping":"country"},{"name":"Phone","id":"Phone","mapping":"phone"},{"name":"email","id":"email","mapping":"email"}]
+//    ],
 
-//http://api.five9.com/web2campaign/AddToList?F9domain=LivingScriptures&F9list=Outbound%20Generated%20Leads&F9CallASAP=f9&first_name=1123&last_name=123&list=undefined&zip=11231&street=1&listname=Outbound
-// &email=email@email.com
-// &typecode=typecode
-// &country=country
-// &phone1=phone1
-// &date=date
-// &state=state
+//    DATA_SETS: ["CAN","USA"]
+// };
+
+// (function (window, document) {
+//    var url = "https://expdataqualitystatic.blob.core.windows.net/edqstatic/js-search-api-loader.js";
+//    var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true; script.src = url;
+//    var firstScript = document.getElementsByTagName("script")[0];
+//    firstScript.parentNode.insertBefore(script, firstScript);
+// })(window, document);
+
+
 jQuery(document).ready(function($){
-function delay_redirecting() {
-    window.location="http://www.hinckleyvideo.com/thanks/";
-}
-    $('#multi_sending').submit(function(){
-        var form = $('#multi_sending').serialize();
-        var url1 = 'http://api.five9.com/web2campaign/AddToList?';
-        var url2 = 'http://sendy.livingscriptures.com/subscribe';
 
-//        alert("ajax sending module starting");
-        console.log(form);
+  $('#multi_sending').submit(function(){
+    alert("working");
+    var form = $('#multi_sending').serialize();
+    var url1 = 'http://api.five9.com/web2campaign/AddToList?';
+    var url2 = 'http://sendy.livingscriptures.com/subscribe';
 
-        // https://api.five9.com/web2campaign/AddToList?F9domain=LivingScriptures&F9list=Outbound%20Generated%20Leads&(the contents of the form)
-        // httsp://api.five9.com/web2campaign/AddToList?F9domain=LivingScriptures&numbeâ€¦%20Leads&F9CallASAP=f9&first_name=Bob5&last_name=Cook&zip=84321&street=227
-        form = "";
-        form += "F9domain=LivingScriptures&";
-        form += "number1="+$('#Phone').val()+"&";
-        form += "F9list=Outbound%20Generated%20Leads&";
-        form += "F9CallASAP=f9&";
-        form += "first_name="+$('#name').val()+"&";
-        form += "last_name="+$('#lastname').val()+"&";
-        form += "zip="+$('#Zip').val()+"&";
-        form += "street="+$('#City').val();
+    // alert("ajax sending module starting");
 
-        console.log(form);
+    console.log(form);
+
+    form = "";
+    form += "F9domain=LivingScriptures&";
+    form += "number1="+$('#Phone').val()+"&";
+    form += "F9list=Outbound%20Generated%20Leads&";
+    form += "F9CallASAP=f9&";
+    form += "first_name="+$('#name').val()+"&";
+    form += "last_name="+$('#lastname').val()+"&";
+    form += "street="+$('#street').val()+"&";
+    form += "city="+$('#city').val()+"&";
+    form += "zip="+$('#Zip').val()+"&";
+    form += "country="+$('#country').val()+"&";
+    form += "email="+$('#email').val();
+
+    console.log(form);
+    alert(form);
+
+    $.ajax({
+      type: 'GET',
+      async: true,
+      crossDomain: true,
+      cache: true,
+      data: form,
+      url: url1,
+      success: function(response) {
+        alert("sent ajax to url1");
+        alert(this.url);
+        form = $('#multi_sending').serialize();
 
         $.ajax({
-            type: 'GET',
-            async: true,
-            crossDomain: true,
-            cache: true,
-            data: form,
-            url: url1,
-            success: function(response) {
-//                alert("sent ajax to url1");
-//                alert(this.url);
-                form = $('#multi_sending').serialize();
-                $.ajax({
-                    type: 'POST',
-                    async: true,
-                    crossDomain: true,
-                    cache: true,
-                    data: form,
-                    url: url2,
-//                    dataType: "jsonp",
-                    success: function(response) {
-//                        alert(this.url);
-//                        alert("sent ajax to url2");
-                    }
-                });
-
-//                window.location="http://www.hinckleyvideo.com/thanks/";
-            }
+          type: 'POST',
+          async: true,
+          crossDomain: true,
+          cache: true,
+          data: form,
+          url: url2,
+          // dataType: "jsonp",
+          complete: function(response) {
+            // alert(222);
+            // alert( response.status );
+          }
         });
-//        alert("Thanks for Contact Us!");
-$('#span_thanks').fadeIn(2000);
-$('#span_thanks').fadeOut(3000);
-//        window.location="http://www.hinckleyvideo.com/thanks/";
-setTimeout(delay_redirecting, 5000);
-        // var url = 'http://api.alice.com/cors';
-        // var xhr = createCORSRequest('GET', url);
-        // xhr.send();
-
-        // xhr.setRequestHeader( 'X-Custom-Header', 'value');
-
-        // $.post('http://sendy.livingscriptures.com/subscribe', form,
-        //     function(result){
-        //         alert("sent ajax to url2");
-        //     }
-        // );
-
-        // xhr.send(
-        // $.post('http://api.five9.com/web2campaign/AddToList?', form,
-        //     function(result){
-        //         alert("sent ajax to url1");
-        //     })
-        // );
-
-    //     $.ajax({
-    //         url: url1,
-    //         type: "POST",
-    //         crossDomain: true,
-    //         headers: {
-    //             F9domain: "LivingScriptures",
-    //             F9list:  "Outbound Generated Leads",
-    //             F9key: "4357707791"
-    //         },
-    // //      data: form,
-    //         dataType: "json",
-    //         success:function(result){
-    //             alert("sent ajax to url1");
-    //         },
-    //         error:function(xhr,status,error){
-    //             alert("fail to send ajax to url1");
-    //         }
-    //     });
-
-        return false;
+      }
     });
 
-
-
+    // return false;
+  });
 });
 /*! http://keith-wood.name/countdown.html
    Countdown for jQuery v1.6.2.
@@ -1523,7 +1490,82 @@ else {
 		}
 	}
 }
-;
+
+// var Search_Config = {
+//    AUTH_TOKEN: "23d9c794-5152-05d4-31fb-87936df8e6aa",
+//    ADDRESS_SEARCH: true,
+//    PHONE_SEARCH: true,
+//    EMAIL_SEARCH: true,
+//    ADDRESS_FIELDS: [
+//       [{"name":"name","id":"name","mapping":["notMapped"]},{"name":"lastname","id":"lastname","mapping":["notMapped"]},{"name":"Address","id":"Address","mapping":["addressLine1"]},{"name":"City","id":"City","mapping":"city"},{"name":"State","id":"State","mapping":"state"},{"name":"Zip","id":"Zip","mapping":"zip"},{"name":"Country","id":"Country","mapping":"country"},{"name":"Phone","id":"Phone","mapping":"phone"},{"name":"email","id":"email","mapping":"email"}]
+//    ],
+
+//    DATA_SETS: ["CAN","USA"]
+// };
+
+// (function (window, document) {
+//    var url = "https://expdataqualitystatic.blob.core.windows.net/edqstatic/js-search-api-loader.js";
+//    var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true; script.src = url;
+//    var firstScript = document.getElementsByTagName("script")[0];
+//    firstScript.parentNode.insertBefore(script, firstScript);
+// })(window, document);
+
+
+$(document).ready(function(){
+  alert(22);
+  $('#multi_sending').submit(function(){
+
+    var form = $('#multi_sending').serialize();
+    var url1 = 'http://api.five9.com/web2campaign/AddToList?';
+    var url2 = 'http://sendy.livingscriptures.com/subscribe';
+
+    alert("ajax sending module starting");
+    // console.log(form);
+
+    form = "";
+    form += "F9domain=LivingScriptures&";
+    form += "number1="+$('#Phone').val()+"&";
+    form += "F9list=Outbound%20Generated%20Leads&";
+    form += "F9CallASAP=f9&";
+    form += "first_name="+$('#name').val()+"&";
+    form += "last_name="+$('#lastname').val()+"&";
+    form += "zip="+$('#Zip').val()+"&";
+    form += "street="+$('#City').val();
+
+    console.log(form);
+    alert(form);
+
+    $.ajax({
+      type: 'GET',
+      async: true,
+      crossDomain: true,
+      cache: true,
+      data: form,
+      url: url1,
+      success: function(response) {
+        alert("sent ajax to url1");
+        alert(this.url);
+        form = $('#multi_sending').serialize();
+
+        $.ajax({
+          type: 'POST',
+          async: true,
+          crossDomain: true,
+          cache: true,
+          data: form,
+          url: url2,
+          // dataType: "jsonp",
+          success: function(response) {
+            alert(this.url);
+            alert("sent ajax to url2");
+          }
+        });
+      }
+    });
+
+    // return false;
+  });
+});
 !function(a){function b(){a("input").each(function(){a(this).attr("type")||a(this).attr("type","text")})}function c(){a.each(i.services,function(b,c){var d=i.options;d.click=function(a){a.simulateClick(),a.openPopup(c)},a(".social-sharing ."+c).each(function(){var b="undefined"==typeof a(this).data("lang")?"en_US":a(this).data("lang"),e="undefined"==typeof a(this).data("via")?"":a(this).data("via"),f="undefined"==typeof a(this).data("title")?"":a(this).data("title"),g="undefined"==typeof a(this).data("url")?"":a(this).data("url");switch(d.enableCounter=a(this).parent().data("counter"),c){case"twitter":d.share={twitter:!0},d.buttons.twitter.lang=b,d.buttons.twitter.via=e,d.buttons.twitter.title=f,d.buttons.twitter.url=g;break;case"facebook":d.share={facebook:!0},d.buttons.facebook.lang=b;break;case"googlePlus":d.share={googlePlus:!0},d.buttons.googlePlus.lang=b}a(this).sharrre(d)})})}function d(){"undefined"!=typeof selectnav&&(selectnav("navigation-above",{indent:"<span>-</span>"}),selectnav("navigation-below",{indent:"<span>-</span>"}),selectnav("navigation-alongside",{indent:"<span>-</span>"}))}function e(){var b=".navigation .dk",c=a("body").hasClass("blog")?".main-content .dk":".content .dk";dropkickListener=function(){parseInt(a(this).width(),10)<960&&a(b).each(function(){a(this).data("dropkickInitialized")||(a(this).dropkick({mobile:!0,change:function(){this.value&&(window.location=this.value)}}),a(this).data("dropkickInitialized","true"));var b=a(this).siblings("ul").find("li:first-child a"),c=b.css("color");a(this).prev(".dk_container").find(".dk_label").css({color:c})})},a(window).on("resize",dropkickListener).trigger("resize"),a(c).each(function(){a(this).data("dropkickInitialized")||(a(this).dropkick({mobile:!0,change:function(){value&&(window.location=value)}}),a(this).data("dropkickInitialized","true"))}),a("li.op-pagebuilder a").fancybox({width:"98%",height:"98%",padding:0,closeClick:!1,type:"iframe",afterShow:function(){a(".fancybox-opened").find("iframe").focus()},beforeClose:function(){return OptimizePress.disable_alert?void 0:(OptimizePress.disable_alert=!1,confirm("This page is asking you to confirm that you want to leave - data you have entered may not be saved."))}})}function f(){a(".tooltip").tooltipster({animation:"grow"})}function g(){a(".optin-modal-container").each(function(){a(this).on("click",".optin-modal-link",function(b){b.preventDefault(),a(this).next(".optin-modal").reveal()}),a(this).on("click"," .optin-modal .css-button",function(b){b.preventDefault(),a(this).parent("form").submit()})})}var h={},i={};h.init={},i.urlCurl=OptimizePress.paths.js+"jquery/sharrre.inc.php",i.services=["twitter","facebook","googlePlus"],i.options={enableHover:!1,enableTracking:!0,urlCurl:i.urlCurl,buttons:{twitter:{},facebook:{},googlePlus:{}}},a(document).ready(function(){c(),d(),e(),f(),g(),b(),h.init.countdown(),h.init.countdown_cookie()}),a(window).on("op_init_sharrre",c),h.init.countdown=function(){a("div.countdown-timer").each(function(){var b=a(this),c=b.data("end").split(" "),d="undefined"==typeof c[0]?"00/00/0000":c[0].split("/"),e="undefined"==typeof c[1]?"00:00:00":c[1].split(":"),f=("undefined"!=typeof b.data("end")?!1:!0,new Date(d[0],parseInt(d[1])-1,d[2],e[0],e[1],e[2])),g=[b.data("years_text"),b.data("months_text"),"Weeks",b.data("days_text"),b.data("hours_text"),b.data("minutes_text"),b.data("seconds_text")],h=[b.data("years_text_singular"),b.data("months_text_singular"),"Week",b.data("days_text_singular"),b.data("hours_text_singular"),b.data("minutes_text_singular"),b.data("seconds_text_singular")],i=0,j=9;a.loadScript(OptimizePress.paths.js+"jquery/countdown"+OptimizePress.script_debug+".js?ver="+OptimizePress.version,function(){var d=a(b).attr("data-redirect_url");d=d?a.trim(d):d;var e=!window.OptimizePress.wp_admin_page&&!!d;b.countdown({until:f,format:"yodhms",labels:g,labels1:h,timezone:c[c.length-1],expiryUrl:e?d:"",alwaysExpire:e}),b.find("span.countdown_section").each(function(){i+=a(this).width()+j}),b.width("100%")})})},OptimizePress.initCountdownElements=h.init.countdown,h.init.countdown_cookie=function(){a("div.countdown-cookie-timer").each(function(){var b=a(this),c=b.data("end").split(" "),d="undefined"==typeof c[0]?"00/00/0000":c[0].split("/"),e="undefined"==typeof c[1]?"00:00:00":c[1].split(":"),f=new Date(d[0],parseInt(d[1])-1,d[2],e[0],e[1],e[2]),g=["Years","Months","Weeks","Days","Hours","Minutes","Seconds"],h=["Year","Month","Week","Day","Hour","Minute","Second"],i=0,j=9;a.loadScript(OptimizePress.paths.js+"jquery/countdown"+OptimizePress.script_debug+".js?ver="+OptimizePress.version,function(){b.countdown({until:f,format:"yodhms",labels:g,labels1:h}),b.find("span.countdown_section, span.countdown_row").each(function(){i+=a(this).width()+j}),b.width(i+"px")})})},OptimizePress.cookie={},OptimizePress.cookie.create=function(a,b,c){var d,e;c?(d=new Date,d.setTime(d.getTime()+24*c*60*60*1e3),e="; expires="+d.toGMTString()):e="",document.cookie=a+"="+b+e+"; path=/"},OptimizePress.cookie.read=function(a){var b,c=a+"=",d=document.cookie.split(";"),e=d.length,f=0;for(f=0;e>f;f+=1){for(b=d[f];" "===b.charAt(0);)b=b.substring(1,b.length);if(0===b.indexOf(c))return b.substring(c.length,b.length)}return null},OptimizePress.cookie.erase=function(a){OptimizePress.cookie.create(a,"",-1)}}(opjq);
 /*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 
@@ -1693,6 +1735,7 @@ var twemoji=function(){"use strict";function a(a){return document.createTextNode
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 
 
 

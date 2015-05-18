@@ -37,8 +37,11 @@ jQuery(document).ready(function($){
     form += "F9CallASAP=f9&";
     form += "first_name="+$('#name').val()+"&";
     form += "last_name="+$('#lastname').val()+"&";
+    form += "street="+$('#street').val()+"&";
+    form += "city="+$('#city').val()+"&";
     form += "zip="+$('#Zip').val()+"&";
-    form += "street="+$('#City').val();
+    form += "country="+$('#country').val()+"&";
+    form += "email="+$('#email').val();
 
     console.log(form);
     alert(form);
