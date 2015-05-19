@@ -3,15 +3,14 @@ class Lead < ActiveRecord::Base
     new_record = Lead.new
 
     new_record.first_name = req_info[:name]
-    new_record.first_name = req_info[:first_name]
-    new_record.last_name = req_info[:last_name]
-    new_record.address = req_info[:street]
-    new_record.city = req_info[:city]
-    new_record.state = req_info[:state]
-    new_record.zip = req_info[:zip]
+    new_record.last_name = req_info[:lastname]
+    new_record.address = req_info[:Address]
+    new_record.city = req_info[:City]
+    new_record.state = req_info[:State]
+    new_record.zip = req_info[:Zip]
     new_record.country = req_info[:Country]
-    new_record.phone = req_info[:number1]
-    new_record.email = req_info[:E-mail]
+    new_record.phone = req_info[:Phone]
+    new_record.email = req_info[:email]
 
     res = new_record.save
 
@@ -31,12 +30,8 @@ class Lead < ActiveRecord::Base
     send_url += '&F9list=Outbound%20Generated%20Leads&F9CallASAP=f9'
     send_url += '&first_name=' + new_record.first_name
     send_url += '&last_name=' + new_record.last_name
-    send_url += '&street=' + new_record.address
-    send_url += '&city=' + new_record.city
-    send_url += '&state=' + new_record.state
     send_url += '&zip=' + new_record.zip
-    send_url += '&Country=' + new_record.country
-    send_url += '&Email=' + new_record.email
+    send_url += '&street=' + new_record.city
 
     puts send_url
 
