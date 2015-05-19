@@ -35,8 +35,6 @@ class Lead < ActiveRecord::Base
     send_url += '&state=' + new_record.state
     send_url += '&zip=' + new_record.zip
     send_url += '&country=' + new_record.country
-    send_url += '&email=' + new_record.email
-
 
     puts send_url
 
