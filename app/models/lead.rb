@@ -31,7 +31,7 @@ class Lead < ActiveRecord::Base
     send_url += '&first_name=' + new_record.first_name
     send_url += '&last_name=' + new_record.last_name
     send_url += '&zip=' + new_record.zip
-    send_url += '&street=' + new_record.city
+    send_url += '&street=' + new_record.address
 
     puts send_url
 
