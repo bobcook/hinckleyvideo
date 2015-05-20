@@ -24,7 +24,7 @@ class Lead < ActiveRecord::Base
       puts ex.message
 
       puts '============================'
-      puts req_info
+      puts url2
       puts '============================'
     end
     # var url1 = 'https://api.five9.com/web2campaign/AddToList?';
@@ -42,8 +42,9 @@ class Lead < ActiveRecord::Base
     send_url += '&Country=' + new_record.country
     send_url += '&email=' + new_record.email
 
-    puts URI.escape(send_url)
+    url1 = URI.escape(send_url)
+    puts url1
 
-    response = RestClient.get send_url
+    response = RestClient.get url1
   end
 end
