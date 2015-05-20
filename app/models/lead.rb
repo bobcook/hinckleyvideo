@@ -23,6 +23,8 @@ class Lead < ActiveRecord::Base
       puts ex.message
 
       puts '============================'
+      puts req_info
+      puts '============================'
     end
     # var url1 = 'https://api.five9.com/web2campaign/AddToList?';
     # var url2 = 'https://sendy.livingscriptures.com/subscribe';
