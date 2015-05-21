@@ -17,7 +17,7 @@ class Lead < ActiveRecord::Base
     res = new_record.save
 
     begin
-      RestClient.post('http://sendy.livingscriptures.com/subscribe', req_info)
+      RestClient.post 'http://sendy.livingscriptures.com/subscribe', req_info.to_json
     rescue => ex
       logger.error ex.message
       puts ex.message
