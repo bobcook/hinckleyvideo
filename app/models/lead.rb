@@ -17,14 +17,12 @@ class Lead < ActiveRecord::Base
     res = new_record.save
 
     begin
-      RestClient.post 'http://sendy.livingscriptures.com/subscribe', req_info.to_json
+      RestClient.post('http://sendy.livingscriptures.com/subscribe', req_info)
     rescue => ex
       logger.error ex.message
       puts ex.message
-
       puts '============================'
       puts req_info
-      puts '============================'
     end
     # var url1 = 'https://api.five9.com/web2campaign/AddToList?';
     # var url2 = 'https://sendy.livingscriptures.com/subscribe';
